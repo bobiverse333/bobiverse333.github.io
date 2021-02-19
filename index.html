@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>A very dumb website</title>
-          <meta http-equiv="refresh"
-        content="1; url = https://youtu.be/dQw4w9WgXcQ" /> 
+       <script type="text/javascript" src="CircleDraw.js"></script> 
+	 <title>A very dumb website</title>
+          
         <style>
         h2 {
           color : green;
@@ -19,6 +19,68 @@
     	</style>
     </head>
 	<body>
+        <p align="center"> 
+	<!--This draws the Canvas on the webpage -->
+      <canvas id="mycanvas"></canvas> 
+    </p>
+ </body>
+ 
+ <!-- Run all the JavaScript stuff -->
+ <!-- Include the processing.js library -->
+ <!-- See https://khanacademy.zendesk.com/hc/en-us/articles/202260404-What-parts-of-ProcessingJS-does-Khan-Academy-support- for differences -->
+ <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
+ 
+ <script>
+    var sketchProc = function(processingInstance) {
+     with (processingInstance) {
+        size(400, 400); 
+        frameRate(30);
+        
+        // ProgramCodeGoesHere
+
+var h = 200;
+var k = 200;
+var r = 100;
+var x = 1;
+var y = 1;
+var angle_now = 0;
+
+
+var getAngle = function(current_angle) {
+    var angle = current_angle;
+  if ( angle > 360) {
+    angle = 0;
+  }
+  else { angle += 0.1; }
+  angle_now = angle;
+};
+
+var CirclePoint = function(x_cord, y_cord) {
+    getAngle(angle_now);
+    x = h + cos(angle_now)*r;
+    y = k + sin(angle_now)*r;
+};
+
+draw= function() {
+     CirclePoint(x, y);
+    background(255, 255, 255);
+    noStroke();
+    fill(0, 34, 255);
+    ellipse(x,y, 10, 10);
+    fill(30,10,10);
+    ellipse(h,k, 45, 47);
+};
+
+    }};
+    // Get the canvas that Processing-js will use
+    var canvas = document.getElementById("mycanvas"); 
+    // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
+    var processingInstance = new Processing(canvas, sketchProc); 
+ </script>
+        
+        
+        
+        
     <h1> “Over the Wintry” by Natsume Sōseki</h1>
     <p>
 	<em>
